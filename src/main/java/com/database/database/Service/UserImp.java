@@ -1,5 +1,6 @@
 package com.database.database.Service;
 
+import com.database.database.DTO.UserDto;
 import com.database.database.Interface.IUser;
 import com.database.database.Model.User;
 import com.database.database.Repo.UserRepo;
@@ -15,7 +16,13 @@ public class UserImp implements IUser {
     @Autowired
     private UserRepo userRepo;
     @Override
-    public String save(User user) {
+    public String save(UserDto userDto) {
+
+        User user = new User();
+        user.setFirstName(userDto.firstName);
+        user.setLastName(userDto.lastName);
+        user.setMobileNumber(userDto.mobileNumber);
+        user.setPassword(user.getPassword());
         userRepo.save(user);
         return "user added";
     }
@@ -52,7 +59,7 @@ public class UserImp implements IUser {
 
     @Override
     public String delete(Integer userId) {
-//        userRepo.findById(userId).orElseThrow(()->new RuntimeException("user id not found"));
+        userRepo.findById(userId).orElseThrow(()->new RuntimeException("user id not found"));
 
         userRepo.deleteById(userId);
         return "user deleted";

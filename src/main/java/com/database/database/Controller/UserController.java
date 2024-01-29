@@ -1,6 +1,7 @@
 package com.database.database.Controller;
 
 
+import com.database.database.DTO.UserDto;
 import com.database.database.Interface.IUser;
 import com.database.database.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class UserController {
     private IUser iUser;
 
     @PostMapping("/save")
-    public String insertUsers(@RequestBody User user){
+    public String insertUsers(@RequestBody UserDto user){
             String output = iUser.save(user);
             return output;
     }
