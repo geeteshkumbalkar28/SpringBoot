@@ -40,5 +40,17 @@ public class UserController {
         User user1 = iUser.update(user,userId);
         return user1;
     }
+    @DeleteMapping("/delete")
+    public String delete(@RequestParam Integer userId){
+
+        try
+        {
+            String message = iUser.delete(userId);
+            return message;
+
+        }catch (RuntimeException e){
+            return e.getMessage();
+        }
+        }
 
 }

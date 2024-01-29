@@ -22,8 +22,8 @@ public class UserImp implements IUser {
 
     @Override
     public User getByID(Integer userId) {
-        Optional<User> user = userRepo.findById(userId);
-        return user.get();
+        User user = userRepo.findById(userId).orElseThrow(()->new RuntimeException("user not found by id"));;
+        return user;
     }
 
     @Override
@@ -48,5 +48,13 @@ public class UserImp implements IUser {
 
         userRepo.save(user1);
         return user1;
+    }
+
+    @Override
+    public String delete(Integer userId) {
+//        userRepo.findById(userId).orElseThrow(()->new RuntimeException("user id not found"));
+
+        userRepo.deleteById(userId);
+        return "user deleted";
     }
 }

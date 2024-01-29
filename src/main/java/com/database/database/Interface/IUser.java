@@ -12,4 +12,6 @@ public interface IUser {
     List<User> getAll();
 
     User update(User user, Integer userId);
+
+    String delete(Integer userId);
 }
