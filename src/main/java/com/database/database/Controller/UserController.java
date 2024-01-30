@@ -20,7 +20,11 @@ public class UserController {
             String output = iUser.save(user);
             return output;
     }
-
+    @GetMapping("/login")
+    public User login(@RequestParam String userName ,@RequestParam String password){
+        User user=iUser.login(userName,password);
+        return user;
+    }
     @GetMapping("/getById/{userId}")
     public User getById(@PathVariable Integer userId){
 

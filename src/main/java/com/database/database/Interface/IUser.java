@@ -15,4 +15,6 @@ public interface IUser {
     User update(User user, Integer userId);
 
     String delete(Integer userId);
+
+    User login(String userName, String password);
 }

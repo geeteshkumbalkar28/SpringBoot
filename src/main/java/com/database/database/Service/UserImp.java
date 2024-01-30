@@ -64,4 +64,11 @@ public class UserImp implements IUser {
         userRepo.deleteById(userId);
         return "user deleted";
     }
+
+    @Override
+    public User login(String userName, String password) {
+        User user =userRepo.findByUserId(userName,password).orElseThrow(()->new RuntimeException("user name not found"));
+
+        return user;
+    }
 }
